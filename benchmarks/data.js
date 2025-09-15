@@ -1,56 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1757456304428,
+  "lastUpdate": 1757923863662,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "name": "czlonkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "name": "czlonkowski",
-            "username": "czlonkowski"
-          },
-          "id": "959f2913957b1e50caf928830c031b96cd54c8a9",
-          "message": "fix: add Docker configuration file support (fixes #105)",
-          "timestamp": "2025-07-31T15:15:59Z",
-          "url": "https://github.com/czlonkowski/n8n-mcp/pull/106/commits/959f2913957b1e50caf928830c031b96cd54c8a9"
-        },
-        "date": 1753977017622,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.0187,
-            "unit": "ms",
-            "range": 0.2779,
-            "extra": "53453 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.1629,
-            "unit": "ms",
-            "range": 0.4607000000000001,
-            "extra": "316 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.005,
-            "unit": "ms",
-            "range": 0.2661,
-            "extra": "200272 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.0694,
-            "unit": "ms",
-            "range": 0.48070000000000007,
-            "extra": "14415 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -2488,6 +2440,58 @@ window.BENCHMARK_DATA = {
             "range": "0.3022",
             "unit": "ms",
             "extra": "15078 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "03c4e3b9a5e99336bd5a27b36042451b07db575b",
+          "message": "Merge pull request #194 from czlonkowski/templates-update\n\nSummary\nMajor enhancement to the template system with AI-powered metadata generation, smart template discovery, and improved search capabilities for n8n workflow templates.\n\nKey Achievements\n📈 5x more templates: Expanded from 499 to 2,596 high-quality templates\n🤖 AI-powered metadata: Automatic generation of structured metadata using OpenAI\n🔍 Smart template discovery: Search by complexity, setup time, required services, and more\n🗜️ Efficient compression: Gzip compression keeps database size manageable\n🚀 Token usage reduced by 80-90%: New flexible retrieval modes\n🎯 Fuzzy node matching: Find templates using similar node types\nMajor Features Added\n1. AI-Powered Template Metadata Generation 🤖\nStructured metadata automatically generated for all templates using OpenAI\nBatch processing with OpenAI Batch API for cost-effective generation\nRich categorization: Categories, complexity levels, use cases, key features\nSetup time estimates: Helps users understand implementation effort\nTarget audience identification: Matches templates to user roles\nRequired services tracking: Lists external APIs and services needed\n2. Smart Template Discovery System 🔍\nNew Search Capabilities\nSearch by metadata: Filter templates by categories, complexity, setup time\nMulti-faceted search: Combine filters for precise template discovery\nFuzzy node matching: Find templates with similar nodes (e.g., Gmail ≈ Outlook)\nSQL injection protection: Secure parameterized queries throughout\nNew MCP Tools for Template Discovery\nsearch_templates_by_metadata: Smart search with metadata filters\nlist_node_templates: Find templates using specific nodes (with fuzzy matching)\nget_templates_for_task: Curated templates for common tasks\nlist_templates: Browse all templates with metadata\n3. Template System Infrastructure 🏗️\nDatabase Enhancements\nNew metadata columns: metadata_json, metadata_generated_at\nGzip compression: Workflow JSONs compressed (12MB vs 75MB uncompressed)\nQuality filtering: Only templates with >10 views included\nToken sanitization: Automatic removal of API keys/secrets from templates\nFlexible Retrieval Modes\nThree response modes for different use cases:\n\nnodes_only: Just node types and names (minimal tokens)\nstructure: Nodes with positions and connections (moderate detail)\nfull: Complete workflow JSON (maximum detail)\n4. Comprehensive Testing & Security 🛡️\nSecurity Features\nSQL injection prevention: All queries use parameterized statements\nInput validation: Comprehensive sanitization of user inputs\nToken removal: Automatic sanitization of API keys in templates\nDirectory traversal protection: Safe file path handling\nTest Coverage\n✅ 25+ integration tests for metadata operations\n✅ 20+ security tests for SQL injection prevention\n✅ Unit tests for all new components\n✅ Performance tests for batch processing\n✅ All tests passing (120+ tests total)\nImpact Analysis\nMetric\tMain Branch\tThis PR\tChange\nTemplate Count\t499\t2,596\t+420% (5x)\nTemplates with Metadata\t0\t2,596\t100% coverage\nSearch Capabilities\tBasic text\tSmart metadata filters\tMajor enhancement\nToken Usage (minimal mode)\t100%\t10-20%\t80-90% reduction\nDatabase Size\t~40MB\t~48MB\t+20% (acceptable)\nNew API Examples\nSmart Template Search\n// Find simple automation templates that take less than 30 minutes to set up\nsearch_templates_by_metadata({\n  category: 'automation',\n  complexity: 'simple',\n  maxSetupMinutes: 30\n}, limit: 10)\nFuzzy Node Matching\n// Find templates with email nodes (matches Gmail, Outlook, SMTP, etc.)\nlist_node_templates({\n  nodeTypes: ['n8n-nodes-base.gmail']\n})\n// Automatically finds templates with similar email nodes\nTask-Based Discovery\n// Get curated templates for specific tasks\nget_templates_for_task({\n  task: 'webhook_processing'\n})\nMetadata Statistics\n// Get insights into template metadata coverage\nget_metadata_stats()\n// Returns: { total: 2596, withMetadata: 2596, outdated: 0, ... }\nFiles Changed Summary\nNew Components\nsrc/templates/metadata-generator.ts: OpenAI metadata generation\nsrc/templates/batch-processor.ts: Batch API processing\nsrc/utils/node-similarity.ts: Fuzzy node matching logic\nsrc/utils/template-sanitizer.ts: Token removal and sanitization\ntests/integration/templates/metadata-operations.test.ts: Integration tests\ntests/unit/templates/template-repository-security.test.ts: Security tests\nEnhanced Components\nsrc/templates/template-repository.ts: Metadata operations & smart search\nsrc/templates/template-service.ts: Pagination & flexible retrieval\nsrc/templates/template-fetcher.ts: Metadata generation integration\nsrc/mcp/tools.ts: New template discovery tools\nsrc/database/schema.sql: Metadata columns added\nMigration Notes\nExisting databases will be automatically migrated on first run\nMetadata generation is optional (use --generate-metadata flag)\nAll existing tools remain backward compatible\nCompression is transparent to API consumers\nTest Plan\n Run full test suite: npm test\n Test metadata generation with OpenAI\n Verify smart search capabilities\n Test fuzzy node matching\n Verify SQL injection prevention\n Test compression/decompression\n Verify pagination logic\n Test all three get_template modes\n Check memory usage with large templates\n Test with n8n-mcp-tester agent\nDocumentation\nUpdated README with new template tools\nAdded metadata generation guide in docs/\nClaude Project Setup updated with new capabilities",
+          "timestamp": "2025-09-15T10:09:10+02:00",
+          "tree_id": "d8eb3bff41405cd57173b0b4f4f66c81a54eaa85",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/03c4e3b9a5e99336bd5a27b36042451b07db575b"
+        },
+        "date": 1757923862933,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.02,
+            "range": "0.2846",
+            "unit": "ms",
+            "extra": "50041 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.1733,
+            "range": "0.7544999999999997",
+            "unit": "ms",
+            "extra": "315 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0048,
+            "range": "0.2546",
+            "unit": "ms",
+            "extra": "206922 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0712,
+            "range": "0.3799",
+            "unit": "ms",
+            "extra": "14036 ops/sec"
           }
         ]
       }
