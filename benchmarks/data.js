@@ -1,56 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1757923863662,
+  "lastUpdate": 1757973847463,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "name": "czlonkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "name": "czlonkowski",
-            "username": "czlonkowski"
-          },
-          "id": "a4053de998595b4321576ad6a908e65590816ee0",
-          "message": "fix: add Docker configuration file support (fixes #105)",
-          "timestamp": "2025-07-31T15:15:59Z",
-          "url": "https://github.com/czlonkowski/n8n-mcp/pull/106/commits/a4053de998595b4321576ad6a908e65590816ee0"
-        },
-        "date": 1753977630757,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.0205,
-            "unit": "ms",
-            "range": 0.2163,
-            "extra": "48759 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.1319,
-            "unit": "ms",
-            "range": 0.47809999999999997,
-            "extra": "319 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.0049,
-            "unit": "ms",
-            "range": 0.27540000000000003,
-            "extra": "202911 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.0663,
-            "unit": "ms",
-            "range": 0.32420000000000004,
-            "extra": "15094 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -2492,6 +2444,58 @@ window.BENCHMARK_DATA = {
             "range": "0.3799",
             "unit": "ms",
             "extra": "14036 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "469cc1720dc5ec1f0a6ae67193b9a0d177cea109",
+          "message": "Merge pull request #195 from czlonkowski/templates-update\n\nSummary\nAdded optional fields parameter to search_templates tool to allow selective field filtering\nReduces response size by 70-98% when requesting only specific fields (e.g., just id and name)\nMaintains full backward compatibility - all existing calls continue to work unchanged\nChanges\nUpdated tool definition with new fields parameter\nModified template service to support partial responses\nUpdated tool documentation with examples\nBumped version to 2.11.1\nBenefits\n98% reduction in response size when requesting only id/name fields\n70% reduction when including description\nSignificantly reduces token usage for AI agents\nMaintains backward compatibility\nTest Results\n✅ All unit tests passing\n✅ All integration tests passing\n✅ TypeScript linting successful\n✅ Manual testing confirmed 98% size reduction",
+          "timestamp": "2025-09-16T00:02:23+02:00",
+          "tree_id": "528f7b1116916eaa2276dbe54736be2553b44348",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/469cc1720dc5ec1f0a6ae67193b9a0d177cea109"
+        },
+        "date": 1757973847192,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0193,
+            "range": "0.3206",
+            "unit": "ms",
+            "extra": "51801 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.1908,
+            "range": "0.6261999999999999",
+            "unit": "ms",
+            "extra": "313 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0047,
+            "range": "0.2876",
+            "unit": "ms",
+            "extra": "212125 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0669,
+            "range": "0.3647",
+            "unit": "ms",
+            "extra": "14956 ops/sec"
           }
         ]
       }
