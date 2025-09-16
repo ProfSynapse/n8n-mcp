@@ -1,60 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1757973847463,
+  "lastUpdate": 1758018403425,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "email": "56956555+czlonkowski@users.noreply.github.com",
-            "name": "Romuald Członkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
-          },
-          "distinct": true,
-          "id": "23327f5dc72270cf77cd87779779fdd237c7a15c",
-          "message": "Merge pull request #106 from czlonkowski/fix/docker-config-file-support\n\nfix: add Docker configuration file support (fixes #105)",
-          "timestamp": "2025-07-31T18:07:48+02:00",
-          "tree_id": "ee973173090c4b224f364e2e1f313c9c23d7bf89",
-          "url": "https://github.com/czlonkowski/n8n-mcp/commit/23327f5dc72270cf77cd87779779fdd237c7a15c"
-        },
-        "date": 1753978139261,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.0188,
-            "unit": "ms",
-            "range": 0.3092,
-            "extra": "53192 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.1504,
-            "unit": "ms",
-            "range": 0.5278999999999998,
-            "extra": "317 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.005,
-            "unit": "ms",
-            "range": 0.27340000000000003,
-            "extra": "200516 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.0668,
-            "unit": "ms",
-            "range": 0.3655,
-            "extra": "14963 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -2496,6 +2444,58 @@ window.BENCHMARK_DATA = {
             "range": "0.3647",
             "unit": "ms",
             "extra": "14956 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "0ef69fbf75bde6a75a1c4b363ab5cf8618e25a65",
+          "message": "Merge pull request #196 from czlonkowski/n8n-dependencies-update\n\nDependencies Updated\nn8n: 1.110.1 → 1.111.0\nn8n-core: 1.110.0 (unchanged, latest)\nn8n-workflow: 1.108.0 (unchanged, latest)\n@n8n/n8n-nodes-langchain: 1.109.1 → 1.110.0",
+          "timestamp": "2025-09-16T12:24:57+02:00",
+          "tree_id": "33c39a5d79547ca881d87057d33062f4cbdfb228",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/0ef69fbf75bde6a75a1c4b363ab5cf8618e25a65"
+        },
+        "date": 1758018403110,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.019,
+            "range": "0.23999999999999996",
+            "unit": "ms",
+            "extra": "52616 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.3146,
+            "range": "2.5259000000000005",
+            "unit": "ms",
+            "extra": "302 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0046,
+            "range": "0.2616",
+            "unit": "ms",
+            "extra": "215469 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.0667,
+            "range": "0.35760000000000003",
+            "unit": "ms",
+            "extra": "14988 ops/sec"
           }
         ]
       }
