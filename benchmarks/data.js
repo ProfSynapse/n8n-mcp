@@ -1,56 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1758018403425,
+  "lastUpdate": 1758146085255,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "name": "czlonkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "name": "czlonkowski",
-            "username": "czlonkowski"
-          },
-          "id": "a5ef55f1975784bb42594ef2972864666f7183f2",
-          "message": "Feature/n8n integration",
-          "timestamp": "2025-08-01T05:17:32Z",
-          "url": "https://github.com/czlonkowski/n8n-mcp/pull/112/commits/a5ef55f1975784bb42594ef2972864666f7183f2"
-        },
-        "date": 1754026815062,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.0188,
-            "unit": "ms",
-            "range": 0.363,
-            "extra": "53198 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.1591,
-            "unit": "ms",
-            "range": 0.5848,
-            "extra": "317 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.0047,
-            "unit": "ms",
-            "range": 0.27390000000000003,
-            "extra": "211592 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.0676,
-            "unit": "ms",
-            "range": 0.37520000000000003,
-            "extra": "14800 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -2496,6 +2448,58 @@ window.BENCHMARK_DATA = {
             "range": "0.35760000000000003",
             "unit": "ms",
             "extra": "14988 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "70653b16bd66efebc193c9fd1846b151166fe555",
+          "message": "Merge pull request #201 from czlonkowski/fix/update-partial-workflow-operation\n\nSummary\nFixed critical bug in n8n_update_partial_workflow where operations were using wrong property name\nChanged from changes to updates for consistency with operation naming\nResolves issues where AI agents had to fall back to expensive full workflow updates\nFixes\nResolves update_partial_workflow is invalid #159 - update_partial_workflow is invalid\nResolves Partial Workflow Update returns error #168 - Partial Workflow Update returns error\nChanges Made\nUpdated UpdateNodeOperation interface to use updates instead of changes\nUpdated UpdateConnectionOperation for consistency\nFixed implementation in workflow-diff-engine.ts\nUpdated Zod schema validation in handlers-workflow-diff.ts\nFixed documentation and examples\nUpdated all tests to use new property name\nTest Plan\n Build passes (npm run build)\n Tests pass for workflow-diff-engine\n Manually tested with real workflow - updates work correctly\n Verified connections are preserved after updates\nBefore & After\nBefore: {type: \"updateNode\", nodeId: \"123\", changes: {...}} ❌ Failed\nAfter: {type: \"updateNode\", nodeId: \"123\", updates: {...}} ✅ Works",
+          "timestamp": "2025-09-17T23:52:56+02:00",
+          "tree_id": "460b51c28e58cc0ba65afcb19706612ea7a44fa8",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/70653b16bd66efebc193c9fd1846b151166fe555"
+        },
+        "date": 1758146084999,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0194,
+            "range": "0.3234",
+            "unit": "ms",
+            "extra": "51639 ops/sec"
+          },
+          {
+            "name": "sample - array sorting - large",
+            "value": 3.185,
+            "range": "0.6043999999999996",
+            "unit": "ms",
+            "extra": "314 ops/sec"
+          },
+          {
+            "name": "sample - string concatenation",
+            "value": 0.0047,
+            "range": "0.23850000000000002",
+            "unit": "ms",
+            "extra": "214251 ops/sec"
+          },
+          {
+            "name": "sample - object creation",
+            "value": 0.074,
+            "range": "0.482",
+            "unit": "ms",
+            "extra": "13518 ops/sec"
           }
         ]
       }
